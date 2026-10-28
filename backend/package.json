@@ -1,0 +1,25 @@
+{
+  "name": "taskoraq-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo API has no build step",
+    "setup": "npm install && node ../scripts/init-env.mjs",
+    "predev": "node ../scripts/init-env.mjs",
+    "dev": "node --watch server.js",
+    "create-admin": "node scripts/create-admin.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.8.0",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.2.1",
+    "socket.io": "^4.8.4"
+  }
+}

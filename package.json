@@ -1,0 +1,33 @@
+{
+  "name": "taskoraq",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n WEB,API -c cyan,green \"node scripts/wait-for-api.mjs && vite\" \"npm --prefix backend run dev\"",
+    "dev:web": "vite",
+    "dev:api": "npm --prefix backend run dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "setup": "npm install && cd backend && npm install && cd .. && node scripts/init-env.mjs",
+    "predev": "node scripts/init-env.mjs",
+    "predev:api": "node scripts/init-env.mjs",
+    "start": "node backend/server.js",
+    "render-build": "npm install --include=dev && npm --prefix backend install && npm run build"
+  },
+  "dependencies": {
+    "motion": "^12.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "socket.io-client": "^4.8.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "vite": "^8.3.5"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

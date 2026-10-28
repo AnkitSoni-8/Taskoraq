@@ -1,0 +1,24 @@
+# Render Blueprint: one Web Service that serves the API *and* the built React app.
+# Render dashboard -> New -> Blueprint -> select this repo. (Or create a Web Service by hand with the same values.)
+services:
+  - type: web
+    name: taskoraq
+    runtime: node
+    plan: free
+    # Root Directory: leave EMPTY (repo root), NOT "backend"
+    buildCommand: npm run render-build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true          # Render creates a long random secret for you (no .env file needed)
+      - key: MONGO_URI
+        sync: false                  # you paste your MongoDB Atlas connection string in the Render dashboard
+      - key: TRUST_PROXY
+        value: "true"
+      # CLIENT_ORIGIN is optional on Render (RENDER_EXTERNAL_URL is used automatically).
+      # Optional: ADMIN_SETUP_SECRET (16+ chars) to create the first admin, SEED_DEMO=true for a demo site.
